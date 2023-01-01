@@ -10,7 +10,7 @@ RUN set -ex \
             openssl \
             git \
     && git clone https://github.com/neilpang/acme.sh.git acme_src \
-    && cd /acme_src && ./acme.sh --install --cert-home /root/.acme.data \
+    && cd /acme_src && ./acme.sh --install --cert-home /.acme.data \
     && apk del git \
     && rm -rf /acme_src /var/cache/apk/* \
     && mkdir /etc/nginx/ssl \

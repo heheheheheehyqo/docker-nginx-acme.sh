@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ACME_CONFIG=/root/.acme.config
+ACME_CONFIG=/.acme.config
 NGINX_VHOST=/etc/nginx/conf.d/vhost.conf
 
 /root/.acme.sh/acme.sh --set-default-ca --server letsencrypt
