@@ -66,8 +66,6 @@ find "$ACME_CONFIG" -name '*.env' -type f -print0 | while read -rd $'\0' file; d
 
   VHOST+=$'\n'
 
-  echo "$VHOST"
-
   echo "$VHOST" >>$NGINX_VHOST
 
   IFS=' '
