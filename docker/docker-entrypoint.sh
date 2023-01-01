@@ -12,7 +12,16 @@ find "$ACME_CONFIG" -name '*.env' -type f -print0 | while read -rd $'\0' file; d
   basename=${file##*/}
   domainId=${basename%.env}
 
-  vhostFilename="$dir/$domainId.conf"
+  vhostProdFilename="$dir/$domainId.conf"
+  vhostDevFilename="$dir/$domainId.dev.conf"
+
+  if [[ "$APP_ENV" == "dev" && -f "$vhostDevFilename" ]]; then
+    vhostFilename="$vhostDevFilename"
+  elif [ -f "$vhostProdFilename" ]; then
+    vhostFilename="$vhostProdFilename"
+  else
+    break
+  fi
 
   set -a
   # shellcheck disable=SC1090
@@ -57,7 +66,7 @@ find "$ACME_CONFIG" -name '*.env' -type f -print0 | while read -rd $'\0' file; d
 
   VHOST+=$'\n'
 
-echo "$VHOST"
+  echo "$VHOST"
 
   echo "$VHOST" >>$NGINX_VHOST
 
