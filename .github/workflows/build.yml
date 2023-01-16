@@ -6,7 +6,7 @@ on:
 
 env:
   IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/nginx
-  NGINX_VERSION: 1.23.2
+  NGINX_VERSION: 1.23.3
 
 jobs:
   build-image:
